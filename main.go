@@ -33,13 +33,13 @@ func register(w http.ResponseWriter, r *http.Request) {}
 	password := rFormValue("password")
 	if len(username)<8 || len(password)<8 {
 		er := http.StatusNotAcceptable
-		http.error(w, "Invalid username or password", er)
+		http.error(w, "Username ou mot de passe invalide", er)
 		return
 	}
 
 	if _, ok := users[username]; ok {
 		er := http.StatusConflict
-		http.error(w, "Username already exists", er)
+		http.error(w, "Username existe deja", er)
 		return
 	}
 
@@ -48,7 +48,7 @@ func register(w http.ResponseWriter, r *http.Request) {}
 		hashedPassword: hashPassword,
 	}
 
-	fmt.Fprintf(w, "User registered successfully ! ")
+	fmt.Fprintf(w, "Utilisateur enregistré !")
 
 func login(w http.ResponseWriter, r *http.Request) {}
 
